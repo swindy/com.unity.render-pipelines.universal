@@ -83,6 +83,7 @@ namespace UnityEditor.Rendering.Universal
             public static GUIContent generalBlendStyle = EditorGUIUtility.TrTextContent("Blend Style", "Adjusts how this light blends with the Sprites on the Target Sorting Layers. Different Blend Styles can be customized in the 2D Renderer Data Asset.");
             public static GUIContent generalLightOverlapOperation = EditorGUIUtility.TrTextContent("Overlap Operation", "Determines how this light blends with the other lights either through additive or alpha blending.");
             public static GUIContent generalLightOrder = EditorGUIUtility.TrTextContent("Light Order", "Determines the relative order in which lights of the same Blend Style get rendered. Lights with lower values are rendered first.");
+            public static GUIContent generalShadowRadius = EditorGUIUtility.TrTextContent("Radius", "Adjusts the size of the shadows cast by this light. The higher the value, the larger the shadows will be.");
             public static GUIContent generalShadowIntensity = EditorGUIUtility.TrTextContent("Strength", "Adjusts the amount of light occlusion from the Shadow Caster 2D component(s) when blocking this light.The higher the value, the more opaque the shadow becomes.");
             public static GUIContent generalShadowVolumeIntensity = EditorGUIUtility.TrTextContent("Shadow Strength", "Adjusts the amount of volume light occlusion from the Shadow Caster 2D component(s) when blocking this light.");
             public static GUIContent generalSortingLayerPrefixLabel = EditorGUIUtility.TrTextContent("Target Sorting Layers", "Determines which layers this light affects. To optimize performance, minimize the number of layers this light affects.");
@@ -125,6 +126,7 @@ namespace UnityEditor.Rendering.Universal
         SerializedProperty m_LightIntensity;
         SerializedProperty m_UseNormalMap;
         SerializedProperty m_ShadowIntensity;
+        SerializedProperty m_ShadowRaidus;
         SerializedProperty m_ShadowIntensityEnabled;
         SerializedProperty m_ShadowVolumeIntensity;
         SerializedProperty m_ShadowVolumeIntensityEnabled;
@@ -196,6 +198,7 @@ namespace UnityEditor.Rendering.Universal
             m_LightColor = serializedObject.FindProperty("m_Color");
             m_LightIntensity = serializedObject.FindProperty("m_Intensity");
             m_UseNormalMap = serializedObject.FindProperty("m_UseNormalMap");
+            m_ShadowRaidus = serializedObject.FindProperty("m_ShadowRadius");
             m_ShadowIntensity = serializedObject.FindProperty("m_ShadowIntensity");
             m_ShadowIntensityEnabled = serializedObject.FindProperty("m_ShadowIntensityEnabled");
             m_ShadowVolumeIntensity = serializedObject.FindProperty("m_ShadowVolumeIntensity");
@@ -307,6 +310,7 @@ namespace UnityEditor.Rendering.Universal
             {
                 DrawToggleProperty(Styles.generalShadowIntensity, m_ShadowIntensityEnabled, m_ShadowIntensity);
             }
+            EditorGUILayout.PropertyField(m_ShadowRaidus, Styles.generalShadowRadius);
         }
 
         void DrawVolumetricGroup()

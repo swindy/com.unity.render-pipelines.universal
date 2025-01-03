@@ -11,6 +11,7 @@ struct Attributes
 struct Varyings
 {
     float4 vertex : SV_POSITION;
+    float4 color : COLOR;
 };
 
 uniform float3 _LightPos;
@@ -58,6 +59,8 @@ Varyings ProjectShadow(Attributes v)
 
     o.vertex = TransformWorldToHClip(position);
 
+    o.color = 1 - sharedShadowTest;
+    
     return o;
 }
 

@@ -145,6 +145,9 @@ namespace UnityEngine.Rendering.Universal
         [Range(0, 1)]
         [SerializeField] float m_ShadowIntensity = 0.75f;
 
+        [Range(0, 10f)]
+        [SerializeField] float m_ShadowRadius = 1.42f;
+
         [SerializeField] bool m_ShadowVolumeIntensityEnabled = false;
         [Range(0, 1)]
         [SerializeField] float m_ShadowVolumeIntensity = 0.75f;
@@ -212,6 +215,14 @@ namespace UnityEngine.Rendering.Universal
         /// Specifies the darkness of the shadow
         /// </summary>
         public float shadowIntensity { get => m_ShadowIntensity; set => m_ShadowIntensity = Mathf.Clamp01(value); }
+
+        /// <summary>
+        /// 阴影长度
+        /// </summary>
+        public float shadowRadius
+        {
+            get => m_ShadowRadius; set => m_ShadowRadius = value;
+        }
 
         /// <summary>
         /// Specifies that the shadows are enabled

@@ -238,7 +238,7 @@ namespace UnityEngine.Rendering.Universal
                             else
                                 cmdBuffer.ClearRenderTarget(true, false, Color.clear);
 
-                            var shadowRadius = light.boundingSphere.radius;
+                            var shadowRadius = light.shadowRadius;
 
                             cmdBuffer.SetGlobalVector(k_LightPosID, light.transform.position);
                             cmdBuffer.SetGlobalFloat(k_ShadowRadiusID, shadowRadius);
@@ -269,6 +269,7 @@ namespace UnityEngine.Rendering.Universal
                                                 if (shadowCaster.castsShadows)
                                                 {
                                                     SetShadowProjectionGlobals(cmdBuffer, shadowCaster);
+                                                    cmdBuffer.SetGlobalFloat(k_ShadowRadiusID, shadowRadius * shadowCaster.shadowLength);
 
                                                     cmdBuffer.DrawMesh(shadowCaster.mesh, shadowCaster.m_CachedLocalToWorldMatrix, unshadowGeometryMaterial, 0, 0);
                                                     cmdBuffer.DrawMesh(shadowCaster.mesh, shadowCaster.m_CachedLocalToWorldMatrix, projectedShadowsMaterial, 0, 0);

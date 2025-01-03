@@ -44,7 +44,7 @@ Shader "Hidden/ShadowProjected2D"
 
             half4 frag (Varyings i) : SV_Target
             {
-                return half4(1,1,1,1);
+                return half4(i.color.r, i.color.g, i.color.b, i.color.a);
             }
             ENDHLSL
         }
@@ -79,7 +79,7 @@ Shader "Hidden/ShadowProjected2D"
 
             half4 frag (Varyings i) : SV_Target
             {
-                return half4(1,1,1,1);
+                return half4(i.color.r, i.color.g, i.color.b, i.color.a);
             }
             ENDHLSL
         }

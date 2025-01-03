@@ -50,6 +50,7 @@ namespace UnityEditor.Rendering.Universal
         private static class Styles
         {
             public static GUIContent shadowMode = EditorGUIUtility.TrTextContent("Use Renderer Silhouette", "When this and Self Shadows are enabled, the Renderer's silhouette is considered part of the shadow. When this is enabled and Self Shadows disabled, the Renderer's silhouette is excluded from the shadow.");
+            public static GUIContent shadowLength = EditorGUIUtility.TrTextContent("Use Renderer Shadow Length", "设置自身阴影长度");
             public static GUIContent selfShadows = EditorGUIUtility.TrTextContent("Self Shadows", "When enabled, the Renderer casts shadows on itself.");
             public static GUIContent castsShadows = EditorGUIUtility.TrTextContent("Casts Shadows", "Specifies if this renderer will cast shadows");
             public static GUIContent sortingLayerPrefixLabel = EditorGUIUtility.TrTextContent("Target Sorting Layers", "Apply shadows to the specified sorting layers.");
@@ -58,6 +59,7 @@ namespace UnityEditor.Rendering.Universal
         SerializedProperty m_UseRendererSilhouette;
         SerializedProperty m_CastsShadows;
         SerializedProperty m_SelfShadows;
+        SerializedProperty m_ShadowLenght;
 
 
         SortingLayerDropDown m_SortingLayerDropDown;
@@ -66,6 +68,7 @@ namespace UnityEditor.Rendering.Universal
         public void OnEnable()
         {
             m_UseRendererSilhouette = serializedObject.FindProperty("m_UseRendererSilhouette");
+            m_ShadowLenght = serializedObject.FindProperty("m_ShadowLenght");
             m_SelfShadows = serializedObject.FindProperty("m_SelfShadows");
             m_CastsShadows = serializedObject.FindProperty("m_CastsShadows");
 
@@ -128,6 +131,7 @@ namespace UnityEditor.Rendering.Universal
                 EditorGUILayout.PropertyField(m_UseRendererSilhouette, Styles.shadowMode);
             }
 
+            EditorGUILayout.PropertyField(m_ShadowLenght, Styles.shadowLength);
             EditorGUILayout.PropertyField(m_CastsShadows, Styles.castsShadows);
             EditorGUILayout.PropertyField(m_SelfShadows, Styles.selfShadows);
 

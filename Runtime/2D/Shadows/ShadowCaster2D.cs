@@ -29,6 +29,7 @@ namespace UnityEngine.Rendering.Universal
         [SerializeField] int m_ShapePathHash = 0;
         [SerializeField] Mesh m_Mesh;
         [SerializeField] int m_InstanceId;
+        [SerializeField] [Range(0, 1f)] float m_ShadowLenght = 1.0f;
 
         internal ShadowCasterGroup2D m_ShadowCasterGroup = null;
         internal ShadowCasterGroup2D m_PreviousShadowCasterGroup = null;
@@ -89,6 +90,15 @@ namespace UnityEngine.Rendering.Universal
         {
             set { m_CastsShadows = value; }
             get { return m_CastsShadows; }
+        }
+        
+        /// <summary>
+        /// 自身阴影长度
+        /// </summary>
+        public float shadowLength
+        {
+            set { m_ShadowLenght = value; }
+            get { return m_ShadowLenght; }
         }
 
         static int[] SetDefaultSortingLayers()
